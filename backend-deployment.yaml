@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        # Corrected image path pointing to your Docker Hub repository
+        image: abhaydocker732/codtech-backend:v1
+        # Changed to 'Always' to ensure the image is pulled from Docker Hub
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
